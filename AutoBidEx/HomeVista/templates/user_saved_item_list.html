@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block condent %}
+{% load static %}
+ <!-- cartlist -->
+{% for i in Data %}
+  <div class="card border-info mb-3" style="max-width:  980px; height: 100px;border-width: 2px;">
+    <div class="row ">
+      <div class="col-md-2">
+        <img src= "{{ i.frount_image.url }}"  class="img-fluid rounded-start" 
+        width="160" height="150"  alt="...">          </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h5 class="card-title">{{i.Model}}</h5>
+          <pre>Features : {{i.Features }},Id number:{{i.car_id}} User id : {{i.user_id}}   <a style="text-decoration: none;" href="{% url 'view_items' i.car_id %}">View</a>  <a  style="text-decoration: none;" href="{% url 'bidding' i.car_id %}">Start-bidding</a>   <a style="text-decoration: none;"  onclick="return confirm('Do you want delete this saved item ')" type="submit" href="{%  url 'item_delete' i.car_id   %}">Delete</a>   </pre>   
+              
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endfor %}
+{% endblock %}

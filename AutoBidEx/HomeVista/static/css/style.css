@@ -1,0 +1,51 @@
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+    background-color: gray;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height:100vh;
+
+    
+}
+form{
+    background: rgb(214,214,214);
+    padding: 30x;
+    text-align: center;
+    width: 300px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0  20px cyan;
+   
+}
+form input {
+   display: block;
+   background: none;
+   margin: 10px auto;
+   padding: 8px;
+   text-align: center;
+   border: 2px solid #4090db;
+   outline: none;
+   width: 180px;
+   font-size: 22px;
+   border-radius: 10px;
+  
+}
+form input[type="submit"]{
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 800;
+    background: #4090db;
+    color: white;
+}
+p{
+    color: red;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+label{
+    color: #ff7200;
+}

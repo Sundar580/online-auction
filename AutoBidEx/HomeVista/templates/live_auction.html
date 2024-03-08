@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block condent %}
+{% load static %}
+{% for i in Data %}
+<div style="display: flex; justify-content: center;">
+
+    <div class="card border-info mb-3" style="width: 50rem; height:35rem;border-width: 2px;">
+    <img src="{{i.frount_image.url}} " class="card-img-top" src="{% static 'pics\sold_out.png' %}" style="width: 50rem; height:20rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{i.Model}}</h5>
+      <p class="card-text">{{i.Features }},id number:{{i.car_id}} .</p>
+      <div id="total" name="current_bid">Current Bidding: {{i.current_bid}} </div><br>
+      <div id="time" name="time">Time left: {{i.time}} Status : {{i.status}} </div><br>
+       <div style="display: flex;justify-content: space-evenly;" >
+    
+        <a href="{% url 'increase_bid' i.car_id i.current_bid 100 %}"><button style="color: rgb(255, 143, 5);" class="btn btn-dark" >Increase by 100</button> </a>
+        <a href="{% url 'increase_bid' i.car_id i.current_bid 500 %}"> <button style="color: rgb(255, 143, 5);" class="btn btn-dark">Increase by 500</button> </a>
+        <a href="{% url 'increase_bid' i.car_id i.current_bid 1000 %}"><button style="color: rgb(255, 143, 5);" class="btn btn-dark">Increase by 1000</button> </a>
+        <a href="{% url 'car_status' i.car_id %}"> <button type="button" style="color: rgb(255, 143, 5);" class="btn btn-dark">status</button></a>
+
+        
+        </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+{% endfor %}
+{% endblock %}

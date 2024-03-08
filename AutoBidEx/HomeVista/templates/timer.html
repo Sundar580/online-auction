@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+</head>
+<body>
+
+    <h1>Countdown Timer</h1>
+
+    <form id="timerForm">
+        <label for="days">Days:</label>
+        <input type="number" id="days" name="days" min="0" value="0" required>
+
+        <label for="hours">Hours:</label>
+        <input type="number" id="hours" name="hours" min="0" value="0" required>
+
+        <label for="minutes">Minutes:</label>
+        <input type="number" id="minutes" name="minutes" min="0" value="0" required>
+
+        <button type="button" onclick="startTimer()">Start Timer</button>
+    </form>
+
+    <p id="timer"></p>
+
+    <script>
+        var countdownTime = 0; // Initial countdown time in seconds
+        var timerInterval;
+
+        function startTimer() {
+            // Get user input values
+            var days = parseInt(document.getElementById('days').value);
+            var hours = parseInt(document.getElementById('hours').value);
+            var minutes = parseInt(document.getElementById('minutes').value);
+
+            // Convert days, hours, and minutes to seconds and set countdownTime
+            countdownTime = (days * 24 * 60 * 60) + (hours * 60 * 60) + (minutes * 60);
+
+            // Update the timer display
+            updateTimer();
+
+            // Start the timer
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        function updateTimer() {
+            var days = Math.floor(countdownTime / (24 * 60 * 60));
+            var hours = Math.floor((countdownTime % (24 * 60 * 60)) / (60 * 60));
+            var minutes = Math.floor((countdownTime % (60 * 60)) / 60);
+            var seconds = countdownTime % 60;
+
+            document.getElementById('timer').innerHTML = days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
+
+            if (countdownTime > 0) {
+                countdownTime--;
+            } else {
+                clearInterval(timerInterval);
+                document.getElementById('timer').innerHTML = 'Time is up!';
+            }
+        }
+    </script>
+
+</body>
+</html>

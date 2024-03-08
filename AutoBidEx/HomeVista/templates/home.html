@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block condent %}
+{% load static %}
+  <div  class="row justify-content-center" >
+<div class="row row-cols-1 row-cols-md-4 g-2">
+  
+{% for i in Data %}
+  <div class="col">
+    <div class="card border-info mb-3" style="max-width: 18rem; border-width: 2px;">
+      <img src="{{i.frount_image.url}} "
+      width="200" height="300" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{i.Model}}</h5>
+        <p class="card-text">
+<pre>{{i.Model}}
+{{i.Features }}
+id number:{{i.car_id}}
+</pre>   
+        </p>
+        <div class="card-body">
+          <a href="{% url 'view_items' i.car_id %}" class="card-link" style="text-decoration: none;">More info</a>
+          <a href="{% url 'bidding' i.car_id %}" class="card-link" style="text-decoration: none;">Start Acution</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+{% endfor %}
+
+</div>
+</div>
+</div>
+
+
+
+<!-- <div  class="row justify-content-center" >
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  <div class="card border-info mb-3" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <h5 class="card-title">Light card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+</div>
+</div> -->
+
+
+
+{% endblock %}

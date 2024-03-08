@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="res_body">
+    <div class="res_box">
+        <form action="{% url 'signup' %}" method="post" >
+            {% csrf_token %}
+            <label >First Name</label><br>
+            <input type="text" name="first_name" required>
+            <label >User Name</label>
+            <input type="text" name="User_name" required>
+            <label >E-Mail</label>
+            <input type="email" name="e_mail" required>
+            <label >Password</label>
+            <input type="password" name="password" required>
+            <input type="submit" value="SUBMIT">
+            {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+            <p {% if message.tags %} class="{{ message.tag }}" {% endif %} style=" color: red; font-size: small;">{{ message}}</p>
+            {% endfor %}
+            </ul>
+            {% endif %}
+           
+
+        </form>
+
+        
+        
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block condent %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Form</title>
+    <style>
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="email"] {
+            width: 300px;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .profile_box{
+            background-color: rgb(186, 252, 248);
+            height: 300px;
+            width: 300px;
+            position: relative;
+        }
+        .profile_image{
+            background-color: #3bf153;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 50px;
+            clip-path: circle();
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; justify-content: center;">
+        
+    <form action="{% url 'Editprofile' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}   
+        
+        <label for="user_image">User Image:</label>
+        <input type="file" id="user_image" name="user_image" accept="image/*" required >
+
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" value="{{data.first_name}}" >
+
+        <label for="user_name">User Name:</label>
+        <input type="text" id="user_name" name="user_name"   value="{{data.user_name}}">
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" value="{{data.address}}" >
+
+        <label for="phnum">Condact:</label>
+        <input type="text"  name="phnum" value="{{data.phnum}}"  maxlength="10" onkeypress="return event.charCode>=48 && event.charCode<=57" style="width: 200px;" >
+
+
+        <label for="gmail">Gmail:</label>
+        <input type="email" id="gmail" name="gmail"  value="{{data.mail}}" ><br><br>
+        <input type="submit" value="Submit" style="color: rgb(255, 143, 5);">
+        <button type="button" class="btn btn-success"><a style="color: rgb(255, 143, 5); text-decoration: none;" href="{% url 'viewProfile' %}">View Profile</button>
+
+    </form>
+    
+    </div>
+
+    
+</body>
+</html>
+
+
+
+
+
+{% endblock %}

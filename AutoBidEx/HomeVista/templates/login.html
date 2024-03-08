@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body >
+           
+            <form action="{% url 'login' %}" class="login_form_box" method="post">
+            {% csrf_token %}
+            <h1 >LOGIN</h1>
+                <label >E-mail</label><br>
+                <input type="text" name="mail" required>
+                <label >Password</label><br>
+                <input type="Password" name="Login_password" required> <br>               
+                <input type="submit" value="SUBMIT">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <p {% if message.tags %} class="{{ message.tag }}" {% endif %} style=" color: red;">{{ message}}</p>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                <a href="{% url 'signup'%}" class="sign_up_page" style="text-decoration: none; opacity: 0.4; color: blue;">Not Registred? Sign-Up</a>
+            </form>
+
+</body>
+</html>

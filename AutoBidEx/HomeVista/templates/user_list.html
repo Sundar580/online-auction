@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block condent %}
+{% load static %}
+
+{% for dis in key  %}
+
+  <div class="card mb-3" style="max-width:  900px; height: 100px ">
+    <div class="row ">
+      <div class="col-md-2">
+        <img src= "{{ data.userImage.url }}" class="img-fluid rounded-start" 
+        width="160" height="150"  alt="...">          </div>
+      <div class="col-md-10">
+        <div class="card-body">
+            <h5 class="card-title">Name: {{data.first_name}}</h5>
+            <p > <h6>User Name:  {{data.user_name}} user id :{{data.user_id}} <br><br>
+            Gmail:  {{data.mail}}  Condact: {{data.phnum}} <br><br> <a style="text-decoration: none;" href="{% url 'user_info' data.user_id %}">view</a>   <a style="text-decoration: none;"  onclick="return confirm('Do you want delete this account ')" type="submit" href="{%  url ' ' data.user_id  %}">Delete</a>
+            </h6> </p>
+              
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+{% endfor %}
+
+{% endblock %}

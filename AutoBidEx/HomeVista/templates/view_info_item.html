@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block condent %}
+{% load static %}
+<style>
+  
+</style>
+
+<div class="row justify-content-center">
+    <div class="card border-info mb-5" style="max-width: 1200px;height: 500px; border-width: 2px;" >
+    <div class="row g-0">
+      <div class="col-md-4">
+        <div>
+            <div id="carouselExampleCaptions" class="carousel slide">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="{{ data.frount_image.url }}"    class="d-block w-100" alt="..."
+                    width="600" height="400">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Turn Left or Right</h5>
+                    </div>
+                  </div>
+                  {% for i in Images %}
+                  <div class="carousel-item {% if forloop.first %}active{% endif %}"> 
+                    <img src="{{data.Images.url}}" class="d-block w-100" alt="..."
+                    width="600" height="400">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Turn Left or Right</h5>
+                    </div>
+                  </div>
+                  {% endfor %}
+                  </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+        
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h4 class="card-title"> {{ data.Model }}</h4>
+          <p class="card-text">Engine:{{ data.Engine }}<br>
+        Year:{{ data.Year }} <br>
+        Color:{{ data.Color }} <br>
+        Orginal Price:{{data.OrginalPrice}}<br>
+        Starting Price:{{data.StartingPrice}}<br>
+        Fuel Type:{{ data.FuelType}}<br>
+        Fuel Efficiency:{{ data.FuelEfficiency}}<br>
+        Features:{{ data.Features }}<br>
+        Safety:{{ data.Safety }}<br>
+        Insurance Valid Date:{{ data.InsuranceValidDate }}<br>
+        PUCC Valid Date:{{ data.PUCCValidDate }}<br>
+        Fitness Valid Date:{{ data.FitnessValidDate }}<br></p>
+          
+
+          <div class="card-body">
+            <a  style="color: rgb(255, 143, 5);" href="{% url 'usersaved'  data.car_id  %}"  class="btn btn-dark" id="saving_button"   onclick="change()">Save </a>
+            <a style="color: rgb(255, 143, 5);" href="{% url 'bidding' data.car_id %}" class="btn btn-dark">Start Auction</a>
+            <a style="color: rgb(255, 143, 5);" href="{% url 'sellerInfo' data.car_id %}" class="btn btn-dark">Seller info</a>
+
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+    function change(){
+      var button = document.getElementById("saving_button");
+      button.innerHTML="saved";
+    }
+</script>
+
+
+{% endblock %}

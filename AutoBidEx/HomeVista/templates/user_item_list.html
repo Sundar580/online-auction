@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block condent %}
+{% load static %}
+
+<a href="">user list</a>
+
+{% for dis in key  %}
+
+  <div class="card mb-3" style="max-width:  900px; height: 100px ">
+    <div class="row ">
+      <div class="col-md-2">
+        <img src= "{{ dis.frount_image.url }}" class="img-fluid rounded-start" 
+        width="160" height="150"  alt="...">          </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h5 class="card-title">{{dis.Model}}</h5>
+          <pre>{{dis.Model}},{{dis.Features }},id number:{{dis.car_id}}    <a style="text-decoration: none;" href="{% url 'view_items' dis.car_id %}">view</a>   <a  style="text-decoration: none;" href="{% url 'bidding' dis.car_id %}">Start-bidding</a>  <a style="text-decoration: none;"  onclick="return confirm('Do you want delete this auction item ')" type="submit" href="{%  url 'item_delete' dis.car_id   %}">Delete</a>  <a style="text-decoration: none;" href="{% url 'car_status' dis.car_id %}">status</a>
+          </pre>
+              
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block condent %}
+{% load static %}
+
+
+  <form class="row g-3" action="{% url 'register' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="col-md-2">
+      <label for="validationDefault01" class="form-label">Car Model</label>
+      <input type="text" class="form-control" name="CarModel" placeholder="Ford Mustang"  required>
+    </div>
+    <div class="col-md-2">
+      <label for="validationDefault02" class="form-label">Engine</label>
+      <input type="text" class="form-control" name="Engine" placeholder="5.0L V8" required>
+    </div>
+    <div class="col-md-2">
+      <label for="validationDefault02" class="form-label">Year</label>
+      <input type="text" class="form-control" name="Year"  placeholder="2022" required>
+    </div>
+    <div class="col-md-2">
+      <label for="validationDefault02" class="form-label">Color</label>
+      <input type="text" class="form-control" name="Color"  placeholder="Black" required>
+    </div>
+    <div class="col-md-2">
+      <label for="validationDefault02" class="form-label">Orginal Price</label>
+      <input type="number" class="form-control" name="OrginalPrice"  placeholder="$42,000" required>
+    </div>
+    <div class="col-md-2">
+      <label for="validationDefault02" class="form-label">Starting price</label>
+      <input type="number" class="form-control" name="StartingPrice"  placeholder="$42,000" required>
+    </div>
+    <div class="col-md-2">
+      <label for="validationDefault04" class="form-label">Fuel Type</label>
+      <select class="form-select" name="FuelType"  required>
+        <option>Petrol</option>
+        <option>Diesel</option>
+        <option>Electric</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <label for="validationDefault03" class="form-label">Fuel Efficiency</label>
+      <input type="text" class="form-control" name="FuelEfficiency" required>
+    </div>
+    <div class="col-md-2">
+      <label for="validationDefault03" class="form-label">Features</label>
+      <input type="text" class="form-control" name="Features"  required>
+    </div>
+    <div class="col-md-2">
+      <label for="validationDefault03" class="form-label">Safety</label>
+      <input type="text" class="form-control" name="Safety" >
+    </div>
+    <div class="col-md-2">
+      <label for="validationDefault03" class="form-label">Insurance Valid Date</label>
+      <input type="text" class="form-control" name="InsuranceValidDate" required>
+    </div>
+    <div class="col-md-2">
+      <label for="validationDefault03" class="form-label">PUCC Valid Date</label>
+      <input type="text" class="form-control" name="PUCCValidDate" >
+    </div>
+    <div class="col-md-2">
+      <label for="validationDefault03" class="form-label">Fitness Valid Date</label>
+      <input type="text" class="form-control" name="FitnessValidDate" required>
+    </div>
+    <div class="col-md-4">
+        <label for="formFileMultiple" class="form-label">Select display image of the car</label>
+        <input class="form-control" type="file" name="frount_image"  >
+      </div>
+      <div class="col-md-2">
+        <label for="validationDefault03" class="form-label">Finishig Date Auction</label>
+        <input type="datetime-local" class="form-control" name="finishing_time" required>
+      </div>
+   
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value=""  name="checkbox" >
+        <label class="form-check-label" for="invalidCheck2">
+          Agree to terms and conditions
+        </label>
+      </div>
+    </div>
+    <div class="col-12">
+      <button  style="color: rgb(255, 143, 5);"  class="btn btn-dark" onclick="return confirm('Press ok to add the auction sucessfully')" type="submit">Submit form</button>
+    </div>
+  </form>
+
+
+    
+
+{% endblock %}

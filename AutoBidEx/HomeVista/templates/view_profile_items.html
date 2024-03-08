@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block condent %}
+{% load static %}
+
+{% for i in Data %}
+  <div class="card mb-3" style="max-width:  840px; height: 100px ">
+    <div class="row ">
+      <div class="col-md-2">
+        <img src= "{{ i.frount_image.url }}"  class="img-fluid rounded-start" 
+        width="110" height="100"  alt="...">          </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{i.Model}}</h5>
+          <pre>{{i.car_id}},{{i.Features }},id number:{{i.car_id}} User id:{{i.user_id}}<a href="{% url 'view_items' i.car_id %}">view</a>  <a href="{% url 'bidding' i.car_id %}">Start bidding</a></pre>   
+              
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endfor %}
+{% endblock %}
